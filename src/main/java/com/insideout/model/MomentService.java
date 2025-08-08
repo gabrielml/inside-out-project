@@ -22,9 +22,9 @@ public class MomentService {
      * 
      * @param moment - The Moment object to add.
      */
-    public void addMoment(Moment moment) {
-        if (moment != null) {
-            moments.add(moment);
-        }
-    }
+    // public void addMoment(Moment moment) {
+    //     if (moment != null) {
+    //         moments.add(moment);
+        // }
+    // }
 }
