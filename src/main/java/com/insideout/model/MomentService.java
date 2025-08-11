@@ -29,16 +29,18 @@ public class MomentService {
     }
 
     /**
-     * Retrieves an unmodifiable list of all moments.
+     * Retrieves all moments.
      * 
      * <p>
-     * This method 'returns a reference (!)' to the internal list of moments.
-     * This implementation returns the raw list for direct access.
+     * This method now returns a 'Defensive Copy (!)' of the internal list of
+     * moments.
+     * The returned list can be modified freely by the caller without affecting
+     * the internal list of our object.
      * </p>
      * 
      * @return An unmodifiable {@link List} of all {@link Moment} objects.
      */
     public List<Moment> getAllMoments() {
-        return moments;
+        return new ArrayList<>(moments); // Return a copy to prevent external modification.
     }
 }
