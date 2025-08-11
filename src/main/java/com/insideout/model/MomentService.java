@@ -22,9 +22,23 @@ public class MomentService {
      * 
      * @param moment - The Moment object to add.
      */
-    // public void addMoment(Moment moment) {
-    //     if (moment != null) {
-    //         moments.add(moment);
-        // }
-    // }
+    public void addMoment(Moment moment) {
+        if (moment != null) {
+            moments.add(moment);
+        }
+    }
+
+    /**
+     * Retrieves an unmodifiable list of all moments.
+     * 
+     * <p>
+     * This method 'returns a reference (!)' to the internal list of moments.
+     * This implementation returns the raw list for direct access.
+     * </p>
+     * 
+     * @return An unmodifiable {@link List} of all {@link Moment} objects.
+     */
+    public List<Moment> getAllMoments() {
+        return moments;
+    }
 }

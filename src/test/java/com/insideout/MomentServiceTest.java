@@ -34,12 +34,9 @@ public class MomentServiceTest {
 
     @BeforeEach
     void setUp() {
-        momentService = new MomentService();    
+        momentService = new MomentService();
     }
 
-    /**
-     * This test checks...
-     */
     @Test
     @DisplayName("1️⃣ Should successfully add a new moment!")
     void testAddMoment() {
@@ -48,15 +45,13 @@ public class MomentServiceTest {
         Moment moment = new Moment("My test moment", "This is my first test!", Emotion.JOY, LocalDate.now());
 
         // --- When ---
-        // I call the 'addMoment' method of my 'Service class' with the argument 'moment',
+        // I call the 'addMoment' method of my 'Service class' with the argument
+        // 'moment',
         momentService.addMoment(moment);
-        
+
         // --- Then ---
         // I assert that 'my list of moments' has a size of 1.
         List<Moment> moments = momentService.getAllMoments();
         assertThat(moments, hasSize(1));
     }
-
-    
-    
 }
