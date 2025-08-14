@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 import com.insideout.model.Emotion;
 
+/**
+ * 'View class' for handling user interaction related to moments.
+ * This is part of the 'View layer' in the 'MVC architecture'.
+ */
 public class MomentView {
     // --- ATTRIBUTES (aka fields) ---
     private final Scanner scanner;
@@ -22,6 +26,11 @@ public class MomentView {
     }
 
     // --- METHODS ---
+    /**
+     * Prompts the user for moment details and returns them.
+     * 
+     * @return A String array containing title, description, emotion, and date.
+     */
     public String[] getMomentDetails() {
         System.out.println("--- ADD MOMENT ---");
         System.out.println("Enter the title: ");
@@ -46,7 +55,7 @@ public class MomentView {
 
         Emotion emotion = null;
         if (emotionIndex > 0 && emotionIndex <= Emotion.values().length) {
-            emotion = Emotion.values()[emotionIndex -1];
+            emotion = Emotion.values()[emotionIndex - 1];
         } else {
             System.out.println("Invalid emotion selected.");
             return null;
@@ -64,9 +73,12 @@ public class MomentView {
             }
         }
 
-        return new String[]{title, description, emotion.name(), date.format(DATE_FORMATTER)};
+        return new String[] { title, description, emotion.name(), date.format(DATE_FORMATTER) };
     }
 
+    /**
+     * Displays a success messages for adding a moment.
+     */
     public void displayMomentAddedSuccess() {
         System.out.println("Moment added successfully.");
     }
