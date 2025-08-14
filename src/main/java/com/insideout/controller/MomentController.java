@@ -12,6 +12,10 @@ import com.insideout.model.Moment;
 import com.insideout.model.MomentService;
 import com.insideout.view.MomentView;
 
+/**
+ * Controller class to manage the flow for Moment-related actions.
+ * This is a part of the Controller layer in the MVC architecture.
+ */
 public class MomentController {
     // --- ATTRIBUTES (aka fields) ---
     private final MomentService momentService;
@@ -25,6 +29,10 @@ public class MomentController {
     }
 
     // --- METHOD ---
+
+    /**
+     * Handles the user's request to add a new moment.
+     */
     public void addMoment() {
         String[] details = momentView.getMomentDetails();
 
