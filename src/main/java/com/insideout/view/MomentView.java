@@ -36,15 +36,15 @@ public class MomentView {
         System.out.println("Enter the title: ");
         String title = scanner.nextLine();
 
-        System.out.println("Enter the description: ");
+        System.out.println("\nEnter the description: ");
         String description = scanner.nextLine();
 
         // Get emotions
-        System.out.println("Select an emotion: ");
+        System.out.println("\nSelect an emotion: ");
         for (int i = 0; i < Emotion.values().length; i++) {
             System.out.printf("%d. %s%n", i + 1, Emotion.values()[i]);
         }
-        System.out.println("Enter your option: ");
+        System.out.println("\nEnter your option: ");
         int emotionIndex = -1;
         try {
             emotionIndex = Integer.parseInt(scanner.nextLine());
@@ -64,7 +64,7 @@ public class MomentView {
         // Get & Validate Date
         LocalDate date = null;
         while (date == null) {
-            System.out.println("Enter the date (dd/mm/yyyyy): ");
+            System.out.println("\nEnter the date (dd/mm/yyyyy): ");
             String dateString = scanner.nextLine();
             try {
                 date = LocalDate.parse(dateString, DATE_FORMATTER);
@@ -80,6 +80,6 @@ public class MomentView {
      * Displays a success messages for adding a moment.
      */
     public void displayMomentAddedSuccess() {
-        System.out.println("Moment added successfully.");
+        System.out.println("\nMoment added successfully!");
     }
 }
