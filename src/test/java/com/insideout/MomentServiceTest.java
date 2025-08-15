@@ -17,7 +17,8 @@ import com.insideout.model.Moment;
 import com.insideout.model.MomentService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Unit Tests for the MomentService class.
@@ -53,5 +54,31 @@ public class MomentServiceTest {
         // I assert that 'my list of moments' has a size of 1.
         List<Moment> moments = momentService.getAllMoments();
         assertThat(moments, hasSize(1));
+    }
+
+    @Test
+    @DisplayName("2. It should find the new moment added to the list.")
+    void testFindMoment() {
+        // --- Given ---
+        // A 'single moment' with its properties.
+        Moment moment = new Moment("titleTEST", "descriptionTEST", Emotion.SADNESS, LocalDate.now());
+
+        // --- When ---
+        // I add the new moment to the list.
+        momentService.addMoment(moment);
+
+        // --- Then ---
+        // I can find the moment by checking:
+        // 1.The list is not empty.
+        // 2. The list has the expected length.
+        // 3. The moments fields are as expected.
+        List<Moment> moments = momentService.getAllMoments();
+
+        assertThat(moments, hasSize(1));
+        assertNotNull(moments);
+        assertThat(moments.get(0).getTitle(), is("titleTEST"));
+        assertThat(moments.get(0).getDescription(), is("descriptionTEST"));
+        assertThat(moments.get(0).getEmotion(), is(Emotion.SADNESS));
+        assertThat(moments.get(0).getMomentDate(), is(LocalDate.now()));
     }
 }
