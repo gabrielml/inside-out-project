@@ -81,4 +81,23 @@ public class MomentServiceTest {
         assertThat(moments.get(0).getEmotion(), is(Emotion.SADNESS));
         assertThat(moments.get(0).getMomentDate(), is(LocalDate.now()));
     }
+
+    @Test
+    @DisplayName("3. It should not add a null moment to the list.")
+    void testAvoidAddNullMoment(){
+        // --- Given ---
+        // A declared new moment without assign it an object (Uninitialized Declaration [null]).
+        Moment moment = null;
+
+        // --- When ---
+        // I add the new moment to the list.
+        momentService.addMoment(moment);
+
+        // --- Then ---
+        // After recovering the list of moments,
+        // The length of the list remains the same because the new moment is not added.
+        List<Moment> moments = momentService.getAllMoments();
+        assertThat(moments, hasSize(0));
+    }
+
 }
