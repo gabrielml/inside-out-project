@@ -6,6 +6,7 @@ package com.insideout.controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import com.insideout.model.Emotion;
 import com.insideout.model.Moment;
@@ -46,5 +47,11 @@ public class MomentController {
             momentService.addMoment(newMoment);
             momentView.displayMomentAddedSuccess();
         }
+    }
+
+    public void viewAllMoments(){
+        List<Moment> moments = momentService.getAllMoments();
+
+        momentView.displayAllMoments(moments);
     }
 }
