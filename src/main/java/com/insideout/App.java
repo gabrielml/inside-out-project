@@ -23,7 +23,6 @@ public final class App {
     }
 
     // --- METHODS ---
-
     public void run() {
         System.out.println("--- MY DIARY ---");
         while (true) {
@@ -35,7 +34,7 @@ public final class App {
                     momentController.addMoment();
                     break;
                 case "2":
-                    System.out.println("View all moments functionality is not yet implemented.");
+                    momentController.viewAllMoments();
                     break;
                 case "3":
                     System.out.println("Delete a moment functionality is not yet implemented.");
@@ -51,7 +50,6 @@ public final class App {
                     System.out.println("Invalid option! Please try again!");
             }
         }
-
     }
 
     private void displayMenu() {

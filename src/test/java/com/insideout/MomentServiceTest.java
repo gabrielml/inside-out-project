@@ -100,4 +100,29 @@ public class MomentServiceTest {
         assertThat(moments, hasSize(0));
     }
 
+    @Test
+    @DisplayName("4. It should retrieve all moments added to the service.")
+    void testGetAllMoments(){
+        // --- Given (Prepare) ---
+        // A group of moments (in this case two) added to the moment list,
+        Moment moment1 = new Moment("Title m1", "Description m1", Emotion.ANGER, LocalDate.now());
+        Moment moment2 = new Moment("Title m2", "Description m2", Emotion.ANXIETY, LocalDate.now());
+        momentService.addMoment(moment1);
+        momentService.addMoment(moment2);
+
+        // --- When (acts) ---
+        // I retrieve the list of all the moments,
+        List<Moment> moments = momentService.getAllMoments();
+
+        // --- Then (assert) ---
+        // I confirm that the moments are instantiated (not null),
+        // there are two of them, and that their attributes match
+        // the expected ones.
+        assertNotNull(moments);
+        assertThat(moments, hasSize(2));
+
+        assertThat(moments.get(0).getTitle(), is("Title m1"));
+        assertThat(moments.get(1).getTitle(), is("Title m2"));
+    }
+
 }

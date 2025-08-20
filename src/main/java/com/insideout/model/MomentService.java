@@ -14,9 +14,10 @@ import java.util.List;
  * This is a part of the 'Model layer' in the 'MVC architecture'.
  */
 public class MomentService {
-    // Attribute (or field)
+    // --- ATTRIBUTE (or field) ---
     private final List<Moment> moments = new ArrayList<>();
 
+    // --- METHODS ---
     /**
      * Adds a new moment to the list.
      * 
