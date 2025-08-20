@@ -35,7 +35,7 @@ public final class App {
                     momentController.addMoment();
                     break;
                 case "2":
-                    System.out.println("View all moments functionality is not yet implemented.");
+                    momentController.viewAllMoments();
                     break;
                 case "3":
                     System.out.println("Delete a moment functionality is not yet implemented.");
