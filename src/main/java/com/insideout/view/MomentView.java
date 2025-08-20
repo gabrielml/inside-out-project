@@ -7,9 +7,11 @@ package com.insideout.view;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.insideout.model.Emotion;
+import com.insideout.model.Moment;
 
 /**
  * 'View class' for handling user interaction related to moments.
@@ -81,5 +83,22 @@ public class MomentView {
      */
     public void displayMomentAddedSuccess() {
         System.out.println("\nMoment added successfully!");
+    }
+
+    public void displayAllMoments(List<Moment> moments) {
+        if (moments.isEmpty()) {
+            System.out.println("No moments to display. Add a moment first.");
+            return;
+        }
+
+        System.out.println("\n--- ALL MOMENTS ---");
+        for (int i = 0; i < moments.size(); i++) {
+            Moment moment = moments.get(i);
+            System.out.printf("%d. Occurred on: %s. Title: %s. Description: %s. Emotion: %s.%n",
+                    i + 1, moment.getMomentDate().format(DATE_FORMATTER), moment.getTitle(), moment.getDescription(),
+                    moment.getEmotion());
+        }
+
+        System.out.println("-------------------------------------");
     }
 }
