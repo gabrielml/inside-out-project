@@ -29,8 +29,7 @@ public class MomentController {
         this.momentView = momentView;
     }
 
-    // --- METHOD ---
-
+    // --- METHODS ---
     /**
      * Handles the user's request to add a new moment.
      */
@@ -49,7 +48,10 @@ public class MomentController {
         }
     }
 
-    public void viewAllMoments(){
+    /**
+     * Handles the user's request to view all moments.
+     */
+    public void viewAllMoments() {
         List<Moment> moments = momentService.getAllMoments();
 
         momentView.displayAllMoments(moments);

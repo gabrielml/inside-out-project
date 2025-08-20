@@ -85,6 +85,11 @@ public class MomentView {
         System.out.println("\nMoment added successfully!");
     }
 
+    /**
+     * Displays a formatted list of moments to the user.
+     * 
+     * @param moments The list of moments to display.
+     */
     public void displayAllMoments(List<Moment> moments) {
         if (moments.isEmpty()) {
             System.out.println("No moments to display. Add a moment first.");

@@ -23,7 +23,6 @@ public final class App {
     }
 
     // --- METHODS ---
-
     public void run() {
         System.out.println("--- MY DIARY ---");
         while (true) {
@@ -51,7 +50,6 @@ public final class App {
                     System.out.println("Invalid option! Please try again!");
             }
         }
-
     }
 
     private void displayMenu() {
