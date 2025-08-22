@@ -66,7 +66,7 @@ public class MomentView {
         // Get & Validate Date
         LocalDate date = null;
         while (date == null) {
-            System.out.println("\nEnter the date (dd/mm/yyyyy): ");
+            System.out.println("\nEnter the date (dd/mm/yyyy): ");
             String dateString = scanner.nextLine();
             try {
                 date = LocalDate.parse(dateString, DATE_FORMATTER);
@@ -117,10 +117,10 @@ public class MomentView {
     }
 
     public void displayDeletionSuccess(){
-        System.out.printl("Moment successfully deleted.");
+        System.out.println("Moment successfully deleted.");
     }
 
     public void displayMomentNotFound(){
-        System.out.printl("Moment NOT found! No changes were made!");
+        System.out.println("Moment NOT found! No changes were made!");
     }
 }
