@@ -8,6 +8,7 @@ package com.insideout.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Service class to 'manage the business logic' for Moments.
@@ -43,5 +44,9 @@ public class MomentService {
      */
     public List<Moment> getAllMoments() {
         return new ArrayList<>(moments); // Return a copy to prevent external modification.
+    }
+
+    public boolean deleteMoment(UUID id) {
+        return moments.removeIf(moment -> moment.getId().equals(id));
     }
 }
