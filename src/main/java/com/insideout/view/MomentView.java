@@ -106,4 +106,14 @@ public class MomentView {
 
         System.out.println("-------------------------------------");
     }
+
+    public int getMomentIndexToDelete(){
+        System.out.println("Enter the number of the moment you wish to delete: ");
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        }catch (NumberFormatException e) {
+            return -1; // This indicates an invalid input.
+        }
+    }
+
 }
