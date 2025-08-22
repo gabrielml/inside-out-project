@@ -7,6 +7,7 @@ package com.insideout;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,9 @@ import com.insideout.model.MomentService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Unit Tests for the MomentService class.
@@ -123,6 +126,48 @@ public class MomentServiceTest {
 
         assertThat(moments.get(0).getTitle(), is("Title m1"));
         assertThat(moments.get(1).getTitle(), is("Title m2"));
+    }
+
+    // TODO: Make test to delete a moment by ID and to not delete a moment if ID doesn't exist!
+    @Test
+    @DisplayName("5.1 It should successfully delete an existing moment by ID.")
+    void testDeleteMomentExisting(){
+        // --- Given (prepare) ---
+        // A group of moments (in this case two) added to the moment list,
+        Moment moment1 = new Moment("To be deleted", "This moment will be removed", Emotion.SADNESS, LocalDate.now());
+        Moment moment2 = new Moment("To be kept", "This moment will remain.", Emotion.JOY, LocalDate.now());
+
+        // --- When (act) ---
+        // I want to delete the first moment previously added,
+        boolean result = momentService.deleteMoment(moment1.getId());
+        
+        // --- Then (assert) ---
+        // I confirm that the first moment was deleted, "then"
+        // the size of the moments list is one, "then"
+        // the second moment is in the moments list.
+        assertTrue(result);
+        assertThat(momentService.getAllMoments(), hasSize(1));
+        assertThat(momentService.getAllMoments().get(0).getTitle(), is("To be kept"));
+    }
+
+    @Test
+    @DisplayName("5.2. It should NOT delete a moment if the ID does not exist.")
+    void testDeleteMomentNonExistent() {
+        // --- Given (prepare) ---
+        // A moment added to the moment list,
+        // A random ID,
+        Moment moment1 = new Moment("To be kept", "This moment will remain", Emotion.JOY, LocalDate.now());
+        UUID nonExistentID = UUID.randomUUID();
+
+        // --- When (act) ---
+        // I delete a moment with a random ID,
+        boolean result = momentService.deleteMoment(nonExistentID);
+
+        // --- Then (assert) ---
+        // I confirm that the moment with the random ID could not be deleted, and
+        // the list size of moments remains one.
+        assertFalse(result);
+        assertThat(momentService.getAllMoments(), hasSize(1));
     }
 
 }
