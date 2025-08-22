@@ -136,6 +136,8 @@ public class MomentServiceTest {
         // A group of moments (in this case two) added to the moment list,
         Moment moment1 = new Moment("To be deleted", "This moment will be removed", Emotion.SADNESS, LocalDate.now());
         Moment moment2 = new Moment("To be kept", "This moment will remain.", Emotion.JOY, LocalDate.now());
+        momentService.addMoment(moment1);
+        momentService.addMoment(moment2);
 
         // --- When (act) ---
         // I want to delete the first moment previously added,
@@ -156,7 +158,8 @@ public class MomentServiceTest {
         // --- Given (prepare) ---
         // A moment added to the moment list,
         // A random ID,
-        Moment moment1 = new Moment("To be kept", "This moment will remain", Emotion.JOY, LocalDate.now());
+        Moment moment1 = new Moment("To be kept!", "This moment will remain", Emotion.JOY, LocalDate.now());
+        momentService.addMoment(moment1);
         UUID nonExistentID = UUID.randomUUID();
 
         // --- When (act) ---
@@ -165,9 +168,12 @@ public class MomentServiceTest {
 
         // --- Then (assert) ---
         // I confirm that the moment with the random ID could not be deleted, and
-        // the list size of moments remains one.
+        // the list size of moments remains one,
+        // I confirm that the added moment is in the moments list.
         assertFalse(result);
         assertThat(momentService.getAllMoments(), hasSize(1));
+
+        assertThat(momentService.getAllMoments().get(0).getTitle(), is("To be kept!"));
     }
 
 }
