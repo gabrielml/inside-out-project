@@ -42,7 +42,7 @@ public class MomentServiceTest {
     }
 
     @Test
-    @DisplayName("1️⃣ Should successfully add a new moment!")
+    @DisplayName("1. Should successfully add a new moment!")
     void testAddMoment() {
         // --- Given ---
         // A 'single moment' with its properties,
@@ -87,7 +87,7 @@ public class MomentServiceTest {
 
     @Test
     @DisplayName("3. It should not add a null moment to the list.")
-    void testAvoidAddNullMoment(){
+    void testAvoidAddNullMoment() {
         // --- Given ---
         // A declared new moment without assign it an object (Uninitialized Declaration [null]).
         Moment moment = null;
@@ -105,7 +105,7 @@ public class MomentServiceTest {
 
     @Test
     @DisplayName("4. It should retrieve all moments added to the service.")
-    void testGetAllMoments(){
+    void testGetAllMoments() {
         // --- Given (Prepare) ---
         // A group of moments (in this case two) added to the moment list,
         Moment moment1 = new Moment("Title m1", "Description m1", Emotion.ANGER, LocalDate.now());
@@ -128,10 +128,9 @@ public class MomentServiceTest {
         assertThat(moments.get(1).getTitle(), is("Title m2"));
     }
 
-    // TODO: Make test to delete a moment by ID and to not delete a moment if ID doesn't exist!
     @Test
     @DisplayName("5.1 It should successfully delete an existing moment by ID.")
-    void testDeleteMomentExisting(){
+    void testDeleteMomentExisting() {
         // --- Given (prepare) ---
         // A group of moments (in this case two) added to the moment list,
         Moment moment1 = new Moment("To be deleted", "This moment will be removed", Emotion.SADNESS, LocalDate.now());
@@ -142,7 +141,7 @@ public class MomentServiceTest {
         // --- When (act) ---
         // I want to delete the first moment previously added,
         boolean result = momentService.deleteMoment(moment1.getId());
-        
+
         // --- Then (assert) ---
         // I confirm that the first moment was deleted, "then"
         // the size of the moments list is one, "then"

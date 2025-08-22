@@ -17,14 +17,34 @@ import com.insideout.view.MomentView;
 /**
  * Controller class to manage the flow for Moment-related actions.
  * This is a part of the Controller layer in the MVC architecture.
+ * It acts as the intermediary between the {@link MomentService} (Model)
+ * and the {@link MomentView} (View).
  */
 public class MomentController {
     // --- ATTRIBUTES (aka fields) ---
+    /**
+     * The service instance that handles the business logic for moments.
+     */
     private final MomentService momentService;
+
+    /**
+     * The view instance that handles user interaction.
+     */
     private final MomentView momentView;
+
+    /**
+     * The date formatter used by the controller.
+     */
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // --- CONSTRUCTOR ---
+
+    /**
+     * Constructs a new MomentController with the specified service and view.
+     *
+     * @param momentService The {@link MomentService} instance.
+     * @param momentView    The {@link MomentView} instance.
+     */
     public MomentController(MomentService momentService, MomentView momentView) {
         this.momentService = momentService;
         this.momentView = momentView;
@@ -34,6 +54,10 @@ public class MomentController {
 
     /**
      * Handles the user's request to add a new moment.
+     * <p>
+     * It prompts the view for details, creates a new {@link Moment} object,
+     * and then tells the service to add it.
+     * </p>
      */
     public void addMoment() {
         String[] details = momentView.getMomentDetails();
@@ -52,6 +76,10 @@ public class MomentController {
 
     /**
      * Handles the user's request to view all moments.
+     * <p>
+     * It fetches the list of moments from the service and passes them  to
+     * the view for display.
+     * </p>
      */
     public void viewAllMoments() {
         List<Moment> moments = momentService.getAllMoments();
@@ -59,7 +87,13 @@ public class MomentController {
         momentView.displayAllMoments(moments);
     }
 
-    // --- Method to delete a moment ---
+    /**
+     * Handles the user's request to delete a moment.
+     * <p>
+     * It first displays all moments, gets the index from the user,
+     * and then calls the service to perform the deletion.
+     * </p>
+     */
     public void deleteMoment() {
         // Get all moments from the service:
         List<Moment> moments = momentService.getAllMoments();
