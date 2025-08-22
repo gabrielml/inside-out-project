@@ -37,7 +37,7 @@ public final class App {
                     momentController.viewAllMoments();
                     break;
                 case "3":
-                    System.out.println("Delete a moment functionality is not yet implemented.");
+                    momentController.deleteMoment();
                     break;
                 case "4":
                     System.out.println("Filter moments functionality is not yet implemented.");
