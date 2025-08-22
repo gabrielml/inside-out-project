@@ -7,6 +7,7 @@ package com.insideout.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 import com.insideout.model.Emotion;
 import com.insideout.model.Moment;
@@ -30,6 +31,7 @@ public class MomentController {
     }
 
     // --- METHODS ---
+
     /**
      * Handles the user's request to add a new moment.
      */
@@ -55,5 +57,36 @@ public class MomentController {
         List<Moment> moments = momentService.getAllMoments();
 
         momentView.displayAllMoments(moments);
+    }
+
+    // --- Method to delete a moment ---
+    public void deleteMoment() {
+        // Get all moments from the service:
+        List<Moment> moments = momentService.getAllMoments();
+
+        // Pass them to the view for display:
+        if (moments.isEmpty()) {
+            momentView.displayMomentNotFound();
+            return;
+        }
+        momentView.displayAllMoments(moments);
+
+        // Get the user's selected index from the view:
+        int indexToDelete = momentView.getMomentIndexToDelete();
+
+        // Adjust index to be 0-based for list access:
+        if (indexToDelete >= 0 && indexToDelete <= moments.size()) {
+            // Find the UUID that correspond to the ID:
+            UUID momentID = moments.get(indexToDelete - 1).getId();
+            // Call the service to perform the deletion.
+            boolean wasDeleted = momentService.deleteMoment(momentID);
+            if (wasDeleted) {
+                momentView.displayDeletionSuccess();
+            } else {
+                momentView.displayMomentNotFound();
+            }
+        } else {
+            momentView.displayMomentNotFound();
+        }
     }
 }
