@@ -30,7 +30,7 @@ public class MomentView {
     // --- METHODS ---
     /**
      * Prompts the user for moment details and returns them.
-     * 
+     *
      * @return A String array containing title, description, emotion, and date.
      */
     public String[] getMomentDetails() {
@@ -87,7 +87,7 @@ public class MomentView {
 
     /**
      * Displays a formatted list of moments to the user.
-     * 
+     *
      * @param moments The list of moments to display.
      */
     public void displayAllMoments(List<Moment> moments) {
@@ -116,4 +116,11 @@ public class MomentView {
         }
     }
 
+    public void displayDeletionSuccess(){
+        System.out.printl("Moment successfully deleted.");
+    }
+
+    public void displayMomentNotFound(){
+        System.out.printl("Moment NOT found! No changes were made!");
+    }
 }
